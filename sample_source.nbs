@@ -1,0 +1,8 @@
+Module Program
+
+  function main() as integer
+  
+    return 0
+  
+  end function
+end module 
