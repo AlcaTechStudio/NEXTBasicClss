@@ -96,21 +96,21 @@ Module Program
 
         Setup()
         Dim indice_codigos_a_compilar As Integer = 0
-        Dim cronometro As Stopwatch = Stopwatch.StartNew() ' Timer que mede o tempo de execucao do c�digo
+        Dim cronometro As Stopwatch = Stopwatch.StartNew() ' Timer que mede o tempo de execucao do codigo
         ' ''''''''''''''''''''''' Pre-Processor -> Analise '''''''''''''''''''''''''''''''''''''
         For indice_codigos_a_compilar = 0 To codigo_fonte_lst.Count - 1
             If codigo_fonte_lst(indice_codigos_a_compilar).cd_lido = False Then
                 Console.WriteLine("Lendo Arquivo de Codigo fonte: " & codigo_fonte_lst(indice_codigos_a_compilar).caminho & System.Environment.NewLine & System.Environment.NewLine)
                 Try
-                    ' Lendo Arquivo de C�digo Fonte
+                    ' Lendo Arquivo de Codigo Fonte
                     codigo_fonte_lst(indice_codigos_a_compilar).codigo = New StringBuilder(System.IO.File.ReadAllText(codigo_fonte_lst(indice_codigos_a_compilar).caminho))
-                    ' Sanitizando Arquivo de c�digo fonte
+                    ' Sanitizando Arquivo de codigo fonte
                     Console.WriteLine("Sanitizando: " & codigo_fonte_lst(indice_codigos_a_compilar).nome & System.Environment.NewLine & System.Environment.NewLine)
                     sanitizador_Gold_Parser(codigo_fonte_lst(indice_codigos_a_compilar).codigo)
                     'Executando Pre-Processor 
                     Console.WriteLine("Executando Escaneamento do Pre-Processor: " & codigo_fonte_lst(indice_codigos_a_compilar).nome & System.Environment.NewLine & System.Environment.NewLine)
                     If Preprocessor_Scan(codigo_fonte_lst(indice_codigos_a_compilar)) = False Then
-                        'Pre-Processor Rejeitou o c�digo
+                        'Pre-Processor Rejeitou o codigo
                         cronometro.Stop()
                         Console.WriteLine("Erro: Pre-Processor rejeitou o Arquivo: """ & codigo_fonte_lst(indice_codigos_a_compilar).caminho & """")
                         Return 1
